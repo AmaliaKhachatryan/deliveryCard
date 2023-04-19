@@ -5,9 +5,6 @@ import com.codeborne.selenide.ElementsCollection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -46,10 +43,8 @@ public class DeliveryCardTest {
         String date = generateDate(7, "dd");
         String deliveryDate = generateDate(7, "dd.MM.yyyy");
         String city = ("Пе");
-
         $("[data-test-id='city'] input").setValue(city);
         $(byXpath(".//*[contains(text(),"+city+')'+']')).click();
-
         $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $(byXpath(".//*[@class='input__icon']")).click();
         ElementsCollection block = $$(byXpath(".//*[@class='calendar__day']"));
@@ -59,7 +54,6 @@ public class DeliveryCardTest {
             $(byXpath(".//*[@data-step='1']")).click();
             $(byXpath(".//*[text()=" + date + ']')).click();
         }
-
         $("[data-test-id='name'] input").setValue("Геворгян Милена");
         $("[data-test-id='phone'] input").setValue("+79856958251");
         $("[data-test-id='agreement']").click();
